@@ -1,18 +1,28 @@
-import React from 'react';
+import store, {StateType} from './redax/state';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
-import state from './redax/state';
+import App from './App';
 
-ReactDOM.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <App state={state}/>
-        </BrowserRouter>,
-    </React.StrictMode>,
-    document.getElementById('root')
-);
+const rerenderEntireTree = (_state: StateType) => {
+    ReactDOM.render(
+        <React.StrictMode>
+            <BrowserRouter>
+                <App store={store}
+                     state={store.getState()}
+                     dispatch={store.dispatch.bind(store)}
+                     /*updateNewPostText={store.updateNewPostText.bind(store)}*/
+                     newPostText={store.getState().profilePage.newPostText}
+                />
+            </BrowserRouter>,
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
+
+rerenderEntireTree(store.getState())
+
+store.subscribe(rerenderEntireTree)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

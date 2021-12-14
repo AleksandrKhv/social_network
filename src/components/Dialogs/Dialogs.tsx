@@ -4,14 +4,14 @@ import DialogItem from './DialogItem/DialogsItem';
 import Message from './Message/Message';
 import {DialogsPageType} from '../../redax/state';
 
-type DialogType = {
-    state: DialogsPageType
+type PropsType = {
+    dialogsPage: DialogsPageType
 }
 
-const Dialogs = (props: DialogType) => {
+const Dialogs = (props: PropsType) => {
 
-    let dialogElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
-    let messagesElement = props.state.messages.map(m => <Message message={m.message} id={m.id}/>)
+    let dialogElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} />)
+    let messagesElement = props.dialogsPage.messages.map(m => <Message message={m.message}/>)
 
     return (
         <div className={st.dialogs}>

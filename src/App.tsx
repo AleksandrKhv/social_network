@@ -9,21 +9,31 @@ import {Route, Routes} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import {StateType} from './redax/state';
+import {ActionsTypes, StateType, StoreType} from './redax/state';
 
-type AllType = {
+
+type PropsType = {
+    store: StoreType
     state: StateType
+    /*addPost: (newText: string) => void
+    updateNewPostText: (newText: string) => void*/
+    newPostText: string
+    dispatch:(action: ActionsTypes) => void
 }
 
-function App (props: AllType) {
+function App(props: PropsType) {
+
     return (
         <div className="app_wrapper">
             <Header/>
             <Navbar/>
             <div className="app_wrapper_content">
                 <Routes>
-                    <Route path={'/profile'} element={<Profile state={props.state.profilePage}/>}/>
-                    <Route path={'/dialogs'} element={<Dialogs state={props.state.dialogsPage}/>}/>
+                    <Route path={'/profile'} element={<Profile profilePage={props.state.profilePage}
+                                                               dispatch={props.store.dispatch.bind(props.store)}
+                                                               /*updateNewPostText={props.store.updateNewPostText.bind(props.store)}*/
+                                                               newPostText={props.state.profilePage.newPostText}/>}/>
+                    <Route path={'/dialogs'} element={<Dialogs dialogsPage={props.state.dialogsPage}/>}/>
                     <Route path={'/news'} element={<News/>}/>
                     <Route path={'/music'} element={<Music/>}/>
                     <Route path={'/settings'} element={<Settings/>}/>

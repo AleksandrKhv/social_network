@@ -1,7 +1,7 @@
 import React from 'react';
 import st from './Post.module.css'
 
-export type MessagesType = {
+type MessagesType = {
     message: string
     like: number | string
     id: number

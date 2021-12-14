@@ -1,18 +1,40 @@
 import React from 'react';
 import st from './MyPosts.module.css'
 import Post from './Post/Post';
-import {ProfilePageType} from '../../../redax/state';
+import {ActionsTypes, PostsType} from '../../../redax/state';
 
-const MyPosts: React.FC<ProfilePageType> = (props) => {
+type PostType = {
+    posts: Array<PostsType>
+    /*addPost: (newText: string) => void*/
+    newPostText: string
+    /*updateNewPostText: (newText: string) => void*/
+    dispatch:(action: ActionsTypes) => void
+}
 
-    let postsElements = props.posts.map(p => <Post message={p.message} like={p.like} id={p.id}/>)
+const MyPosts = (props: PostType) => {
+
+    const postsElements = props.posts.map(p => <Post message={p.message} like={p.like} id={p.id}/>)
+
+    const onClickHandlerAddPost = () => {
+        /*props.addPost(props.newPostText)*/
+        props.dispatch({type: 'ADD-POST', newPostText: props.newPostText})
+    }
+
+    const newTextChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        /*props.updateNewPostText(e.currentTarget.value)*/
+        /*const action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};*/
+        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText:})
+    }
+
 
     return (
         <div>
             My posts
             <div className={st.wrapper}>
-                <textarea></textarea>
-                <button>Add post</button>
+                <textarea onChange={newTextChangeHandler} value={props.newPostText}/>
+            </div>
+            <div>
+                <button onClick={onClickHandlerAddPost}>Add post</button>
             </div>
             {postsElements}
         </div>

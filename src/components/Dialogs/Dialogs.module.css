@@ -20,5 +20,10 @@
 }
 
 .message {
+color: cornsilk;
+}
 
+.ava_dialogsItem {
+    width: 50px;
+    border-radius: 50%;
 }
