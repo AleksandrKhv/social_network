@@ -2,12 +2,8 @@ import React from 'react';
 import st from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogsItem';
 import Message from './Message/Message';
-import {
-    DialogsPageType,
-    sendNewMessageActionCreator,
-    StoreType,
-    updateNewMessageBodyActionCreator
-} from '../../redax/state';
+import {DialogsPageType, StoreType,} from '../../redax/state';
+import {sendNewMessageActionCreator, updateNewMessageBodyActionCreator} from '../../redax/dialogs_reducer';
 
 type PropsType = {
     dialogsPage: DialogsPageType
