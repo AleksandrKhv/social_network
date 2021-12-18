@@ -19,6 +19,7 @@ type PropsType = {
     updateNewPostText: (newText: string) => void*/
     newPostText: string
     dispatch:(action: ActionsTypes) => void
+    newMessageText: string
 }
 
 function App(props: PropsType) {
@@ -33,7 +34,9 @@ function App(props: PropsType) {
                                                                dispatch={props.store.dispatch.bind(props.store)}
                                                                /*updateNewPostText={props.store.updateNewPostText.bind(props.store)}*/
                                                                newPostText={props.state.profilePage.newPostText}/>}/>
-                    <Route path={'/dialogs'} element={<Dialogs dialogsPage={props.state.dialogsPage}/>}/>
+                    <Route path={'/dialogs'} element={<Dialogs store={props.store}
+                                                               dialogsPage={props.state.dialogsPage}
+                                                               newMessageText={props.state.dialogsPage.newMessageText}/>}/>
                     <Route path={'/news'} element={<News/>}/>
                     <Route path={'/music'} element={<Music/>}/>
                     <Route path={'/settings'} element={<Settings/>}/>

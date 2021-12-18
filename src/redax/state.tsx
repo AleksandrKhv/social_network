@@ -25,6 +25,7 @@ const store: StoreType = {
                 {id: 4, message: 'eeeeeeexxxyyyyyyy'},
                 {id: 5, message: 'nice price'},
             ],
+            newMessageText: ''
         },
         sidebar: [
             {id: 1, name: 'Alex'},
@@ -74,11 +75,24 @@ const store: StoreType = {
             this._state.profilePage.newPostText = action.newText
             this._callSubscriber(this._state)
         }
+        if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+            this._state.dialogsPage.newMessageText = action.body
+            this._callSubscriber(this._state)
+        }
+        if (action.type === SEND_MESSAGE) {
+            let body = this._state.dialogsPage.newMessageText
+            this._state.dialogsPage.newMessageText = ''
+            this._state.dialogsPage.messages.push({id: 6, message: body})
+            this._callSubscriber(this._state)
+        }
     }
 }
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+const SEND_MESSAGE = 'SEND_MESSAGE'
 
 export const addPostActionCreator = (newPostText: string) => {
     return {
@@ -92,7 +106,22 @@ export const updateNewPostTextActionCreator = (text: string) => {
     } as const
 }
 
-export type ActionsTypes = ReturnType<typeof addPostActionCreator> | ReturnType<typeof updateNewPostTextActionCreator>
+export const updateNewMessageBodyActionCreator = (body: string) => {
+    return {
+        type: 'UPDATE-NEW-MESSAGE-TEXT', body: body
+    } as const
+}
+
+export const sendNewMessageActionCreator = () => {
+    return {
+        type: 'SEND_MESSAGE'
+    } as const
+}
+
+export type ActionsTypes = ReturnType<typeof addPostActionCreator>
+    | ReturnType<typeof updateNewPostTextActionCreator>
+    | ReturnType<typeof updateNewMessageBodyActionCreator>
+    | ReturnType<typeof sendNewMessageActionCreator>
 
 export type StoreType = {
     _state: StateType
@@ -124,6 +153,7 @@ export type PostsType = {
 export type DialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessagesType>
+    newMessageText: string
 }
 
 export type DialogsType = {

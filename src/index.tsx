@@ -13,7 +13,7 @@ const rerenderEntireTree = (_state: StateType) => {
                      dispatch={store.dispatch.bind(store)}
                      /*updateNewPostText={store.updateNewPostText.bind(store)}*/
                      newPostText={store.getState().profilePage.newPostText}
-                />
+                 newMessageText={store.getState().dialogsPage.newMessageText}/>
             </BrowserRouter>,
         </React.StrictMode>,
         document.getElementById('root')
