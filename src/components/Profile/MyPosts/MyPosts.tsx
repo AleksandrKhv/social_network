@@ -21,9 +21,10 @@ const MyPosts = (props: PostType) => {
     }
 
     const newTextChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        let text= e.currentTarget.value
         /*props.updateNewPostText(e.currentTarget.value)*/
         /*const action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};*/
-        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText:})
+        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
     }
 
 

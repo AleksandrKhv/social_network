@@ -62,7 +62,8 @@ const store: StoreType = {
         if (action.type === 'ADD-POST') {
             const newPost: PostsType = {
                 id: new Date().getTime(),
-                message: this._state.profilePage.newPostText,
+                // message: this._state.profilePage.newPostText,
+                message: action.newPostText,
                 like: 100
             }
             this._state.profilePage.posts.push(newPost)
@@ -80,7 +81,7 @@ type AddPostActionType = {
     type: 'ADD-POST',
     newPostText: string
 }
-type UpdateNewPostTextActionType = {
+export type UpdateNewPostTextActionType = {
     type: 'UPDATE-NEW-POST-TEXT',
     newText: string
 }
