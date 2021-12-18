@@ -6,7 +6,7 @@ const store: StoreType = {
                 {id: 2, message: "It's my first project", like: 77},
                 {id: 3, message: 'good day', like: 3},
             ],
-            newPostText: 'test'
+            newPostText: ''
         },
         dialogsPage: {
             dialogs: [
@@ -59,7 +59,7 @@ const store: StoreType = {
     },*/
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             const newPost: PostsType = {
                 id: new Date().getTime(),
                 // message: this._state.profilePage.newPostText,
@@ -70,23 +70,29 @@ const store: StoreType = {
             this._callSubscriber(this._state)
             this._state.profilePage.newPostText = ''
         }
-        if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText
             this._callSubscriber(this._state)
         }
     }
 }
 
-type AddPostActionType = {
-    type: 'ADD-POST',
-    newPostText: string
-}
-export type UpdateNewPostTextActionType = {
-    type: 'UPDATE-NEW-POST-TEXT',
-    newText: string
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+
+export const addPostActionCreator = (newPostText: string) => {
+    return {
+        type: ADD_POST, newPostText: newPostText
+    } as const
 }
 
-export type ActionsTypes = AddPostActionType | UpdateNewPostTextActionType
+export const updateNewPostTextActionCreator = (text: string) => {
+    return {
+        type: UPDATE_NEW_POST_TEXT, newText: text
+    } as const
+}
+
+export type ActionsTypes = ReturnType<typeof addPostActionCreator> | ReturnType<typeof updateNewPostTextActionCreator>
 
 export type StoreType = {
     _state: StateType
