@@ -9,16 +9,17 @@ import {Route, Routes} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import {ActionsTypes, StateType, StoreType} from './redax/state';
+import {ActionsTypes, StateType, StoreType} from './redax/store';
+import {RootStoreType} from './redax/redux_store';
 
 
 type PropsType = {
-    store: StoreType
-    state: StateType
+    store: RootStoreType
+    // state: StateType
     /*addPost: (newText: string) => void
     updateNewPostText: (newText: string) => void*/
     newPostText: string
-    dispatch:(action: ActionsTypes) => void
+    dispatch: (action: ActionsTypes) => void
     newMessageText: string
 }
 
@@ -30,13 +31,13 @@ function App(props: PropsType) {
             <Navbar/>
             <div className="app_wrapper_content">
                 <Routes>
-                    <Route path={'/profile'} element={<Profile profilePage={props.state.profilePage}
-                                                               dispatch={props.store.dispatch.bind(props.store)}
-                                                               /*updateNewPostText={props.store.updateNewPostText.bind(props.store)}*/
-                                                               newPostText={props.state.profilePage.newPostText}/>}/>
-                    <Route path={'/dialogs'} element={<Dialogs store={props.store}
-                                                               dialogsPage={props.state.dialogsPage}
-                                                               newMessageText={props.state.dialogsPage.newMessageText}/>}/>
+                    <Route path={'/profile'} element={<Profile profilePage={props.store.profileReducer}
+                                                               dispatch={props.dispatch.bind(props.store)}
+                        /*updateNewPostText={props.store.updateNewPostText.bind(props.store)}*/
+                                                               newPostText={props.store.profileReducer.newPostText}/>}/>
+                    <Route path={'/dialogs'} element={<Dialogs dispatch={props.dispatch.bind(props.store)}
+                                                               dialogsPage={props.store.dialogsReducer}
+                                                               newMessageText={props.store.dialogsReducer.newMessageText}/>}/>
                     <Route path={'/news'} element={<News/>}/>
                     <Route path={'/music'} element={<Music/>}/>
                     <Route path={'/settings'} element={<Settings/>}/>

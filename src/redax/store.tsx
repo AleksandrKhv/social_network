@@ -181,9 +181,5 @@ export type SidebarType = {
     name: string
 }
 
-export type newPostTextType = {
-    newPostText: string
-}
-
 export default store;
 // window.store = store
