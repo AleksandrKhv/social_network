@@ -135,8 +135,8 @@ export type ActionsTypes = ReturnType<typeof addPostActionCreator>
 
 export type StoreType = {
     _state: StateType
-    /*updateNewPostText: (newText: string) => void
-    addPost: () => void*/
+    updateNewPostText: (newText: string) => void
+    addPost: () => void
     _callSubscriber: (state: StateType) => void
     subscribe: (observer: (state: StateType) => void) => void
     getState: () => StateType
@@ -182,4 +182,6 @@ export type SidebarType = {
 }
 
 export default store;
-// window.store = store
+
+//@ts-ignore
+window.store=store
