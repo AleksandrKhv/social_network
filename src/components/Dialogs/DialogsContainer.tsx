@@ -1,19 +1,16 @@
 import React from 'react';
-import st from './Dialogs.module.css'
-import DialogItem from './DialogItem/DialogsItem';
-import Message from './Message/Message';
-import {ActionsTypes, DialogsPageType, StateType, StoreType,} from '../../redax/store';
+import {ActionsTypes, DialogsPageType, StateType} from '../../redax/store';
 import {sendNewMessageActionCreator, updateNewMessageBodyActionCreator} from '../../redax/dialogs_reducer';
 import Dialogs from './Dialogs';
 import {RootStoreType} from '../../redax/redux_store';
 import {connect} from 'react-redux';
 
-type PropsType = {
+/*type PropsType = {
     dialogsPage: DialogsPageType
     newMessageText: string
     dispatch: (action: ActionsTypes) => void
     store: RootStoreType
-}
+}*/
 
 /*const DialogsContainer = (props:PropsType) => {
 
@@ -36,7 +33,7 @@ type PropsType = {
     </StoreContext.Consumer>
 }*/
 
-let mapStateToProps = (state: StateType) => {
+let mapStateToProps = (state: RootStoreType) => {
     return {
         dialogsPage: state.dialogsPage
     }

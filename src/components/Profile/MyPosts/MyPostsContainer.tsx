@@ -43,7 +43,7 @@ const MyPostsContainer = (props: PostType) => {
 };
 */
 
-const mapStateToProps = (state: StateType) => {
+const mapStateToProps = (state: RootStoreType) => {
     return {
         posts: state.profilePage.posts,
         newPostText: state.profilePage.newPostText
