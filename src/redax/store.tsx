@@ -143,18 +143,18 @@ export type StoreType = {
     dispatch: (action: ActionsTypes) => void
 }
 
-export type StateType = {
+type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
     sidebar: Array<SidebarType>
 }
 
-export type ProfilePageType = {
+type ProfilePageType = {
     posts: Array<PostsType>
     newPostText: string
 }
 
-export type PostsType = {
+type PostsType = {
     id: number
     message: string
     like: number
