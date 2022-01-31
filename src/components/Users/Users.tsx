@@ -2,34 +2,42 @@ import React from 'react';
 import st from './Users.module.css'
 import {UsersPropsType} from './UsersContainer';
 
+/*type usersPropsType = {
+    users: Array<userType>
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+    setUsers: (users: Array<usersType>) => void
+}*/
+
 const Users = (props: UsersPropsType) => {
 
-    if (props.users.length===0){
-    props.setUsers([
-        {
-        id: 1,
-        photoUrl: 'https://culture76.ru/upload/iblock/c5d/nevsky.png',
-        followed: false,
-        fullName: 'Alex',
-        status: 'I am a student',
-        location: {city: 'Orsha', country: 'Belarus'}
-    },
-        {
-            id: 2,
-            photoUrl: 'https://culture76.ru/upload/iblock/c5d/nevsky.png',
-            followed: false,
-            fullName: 'Ira',
-            status: 'I am a student',
-            location: {city: 'Praha', country: 'CZ'}
-        },
-        {
-            id: 3,
-            photoUrl: 'https://culture76.ru/upload/iblock/c5d/nevsky.png',
-            followed: true,
-            fullName: 'Manya',
-            status: 'I am a student',
-            location: {city: 'Moscow', country: 'Russia'}
-        },])}
+    if (props.users.length === 0) {
+        props.setUsers([
+            {
+                id: 1,
+                photoUrl: 'https://culture76.ru/upload/iblock/c5d/nevsky.png',
+                followed: false,
+                fullName: 'Alex',
+                status: 'I am a student',
+                location: {city: 'Orsha', country: 'Belarus'}
+            },
+            {
+                id: 2,
+                photoUrl: 'https://culture76.ru/upload/iblock/c5d/nevsky.png',
+                followed: false,
+                fullName: 'Ira',
+                status: 'I am a student',
+                location: {city: 'Praha', country: 'CZ'}
+            },
+            {
+                id: 3,
+                photoUrl: 'https://culture76.ru/upload/iblock/c5d/nevsky.png',
+                followed: true,
+                fullName: 'Manya',
+                status: 'I am a student',
+                location: {city: 'Moscow', country: 'Russia'}
+            },])
+    }
 
     return <div>
         {
