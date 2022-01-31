@@ -1,15 +1,8 @@
 import React from 'react';
-import {usersType} from '../../redax/users_reducer';
 import st from './Users.module.css'
+import {UsersPropsType} from './UsersContainer';
 
-type usersPropsType = {
-    users: Array<usersType>
-    follow: (userId: number) => void
-    unfollow: (userId: number) => void
-    setUsers: (users: Array<usersType>) => void
-}
-
-const Users = (props: usersPropsType) => {
+const Users = (props: UsersPropsType) => {
 
     if (props.users.length===0){
     props.setUsers([

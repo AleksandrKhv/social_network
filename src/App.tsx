@@ -8,9 +8,7 @@ import {Route, Routes} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import {RootStoreType} from './redax/redux_store';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-import Users from './components/Users/Users';
 import UsersContainer from './components/Users/UsersContainer';
 
 

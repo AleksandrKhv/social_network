@@ -1,9 +1,9 @@
 import React from 'react';
-import {ActionsTypes, DialogsPageType, StateType} from '../../redax/store';
 import {sendNewMessageActionCreator, updateNewMessageBodyActionCreator} from '../../redax/dialogs_reducer';
 import Dialogs from './Dialogs';
 import {RootStoreType} from '../../redax/redux_store';
 import {connect} from 'react-redux';
+import {Dispatch} from 'redux';
 
 /*type PropsType = {
     dialogsPage: DialogsPageType
@@ -38,7 +38,7 @@ let mapStateToProps = (state: RootStoreType) => {
         dialogsPage: state.dialogsPage
     }
 }
-let mapDispatchToProps = (dispatch: (action: ActionsTypes) => void) => {
+let mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         updateNewMessageBody: (body: string) => {
             dispatch(updateNewMessageBodyActionCreator(body))

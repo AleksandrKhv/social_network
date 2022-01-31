@@ -2,12 +2,12 @@ import React from 'react';
 import st from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogsItem';
 import Message from './Message/Message';
-import {ActionsTypes, DialogsPageType} from '../../redax/store';
+import {InitialStateType} from '../../redax/dialogs_reducer';
 
 type PropsType = {
-    dialogsPage: DialogsPageType
+    dialogsPage: InitialStateType
     newMessageText: string
-    dispatch: (action: ActionsTypes) => void
+    //dispatch: (action: ActionsTypes) => void
     sendNewMessage: () => void
     updateNewMessageBody: (body: string) => void
 }
@@ -16,7 +16,7 @@ const Dialogs = (props: PropsType) => {
 
     let dialogElements = props.dialogsPage.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
     let messagesElement = props.dialogsPage.messages.map(m => <Message key={m.id} message={m.message}/>)
-    let newMessageText = props.newMessageText
+   let newMessageTextValue = props.newMessageText
 
     const onSendMessageHandler = () => {
         props.sendNewMessage()
@@ -37,7 +37,7 @@ const Dialogs = (props: PropsType) => {
             <div className={st.messages}>
                 <div>{messagesElement}</div>
                 <div>
-                    <div><textarea value={newMessageText}
+                    <div><textarea value={newMessageTextValue}
                                    onChange={onNewMessageChangeHandler}
                                    placeholder={'Enter your message'}/></div>
                     <div>

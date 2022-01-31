@@ -160,18 +160,18 @@ export type PostsType = {
     like: number
 }
 
-export type DialogsPageType = {
+type DialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessagesType>
     newMessageText: string
 }
 
-export type DialogsType = {
+type DialogsType = {
     id: number
     name: string
 }
 
-export type MessagesType = {
+type MessagesType = {
     id: number
     message: string
 }

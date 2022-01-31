@@ -1,4 +1,15 @@
-import {ActionsTypes, DialogsPageType} from './store';
+
+
+type DialogsType = {
+    id: number
+    name: string
+}
+
+type MessagesType = {
+    id: number
+    message: string
+}
+
 
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 const SEND_MESSAGE = 'SEND_MESSAGE'
@@ -12,18 +23,31 @@ let initialState = {
         {id: 5, name: 'Ira'},
         {id: 6, name: 'Ilariya'},
         {id: 7, name: 'Iolanta'},
-    ],
+    ] as Array<DialogsType>,
     messages: [
         {id: 1, message: 'Hi'},
         {id: 2, message: 'Hi2all'},
         {id: 3, message: 'HiU2'},
         {id: 4, message: 'eeeeeeexxxyyyyyyy'},
         {id: 5, message: 'nice price'},
-    ],
+    ] as Array<MessagesType>,
     newMessageText: ''
 }
 
-const dialogsReducer = (state: DialogsPageType = initialState, action: ActionsTypes) => {
+export type InitialStateType = typeof initialState
+
+export type AllACDialogsType = UpdateNewMessageBodyACType | SendNewMessageACType
+
+export type UpdateNewMessageBodyACType ={
+    type: 'UPDATE-NEW-MESSAGE-TEXT',
+    body: string
+}
+
+export type SendNewMessageACType = {
+    type: 'SEND_MESSAGE',
+}
+
+const dialogsReducer = (state: InitialStateType = initialState, action: AllACDialogsType): InitialStateType => {
 
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_TEXT:
@@ -40,17 +64,6 @@ const dialogsReducer = (state: DialogsPageType = initialState, action: ActionsTy
         default:
             return state
     }
-
-    /* if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-         _state.newMessageText = action.body
-     }
-     if (action.type === SEND_MESSAGE) {
-         let body = _state.newMessageText
-         _state.newMessageText = ''
-         _state.messages.push({id: 6, message: body})
-
-     }*/
-
 };
 
 export const updateNewMessageBodyActionCreator = (body: string) => {

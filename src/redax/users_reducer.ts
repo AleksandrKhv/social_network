@@ -1,10 +1,9 @@
-import {ActionsTypes, ProfilePageType} from './store';
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 
-export type usersReducerType = followACType | unfollowACType | setUsersACType
+export type AllUsersReducerType = followACType | unfollowACType | setUsersACType
 
 
 export type followACType = {
@@ -19,10 +18,10 @@ export type unfollowACType = {
 
 export type setUsersACType = {
     type: 'SET_USERS'
-    users: Array<usersType>
+    users: Array<userType>
 }
 
-export type usersType = {
+export type userType = {
     id: number,
     photoUrl: string,
     followed: boolean,
@@ -65,7 +64,11 @@ let initialState = {
     ]
 }
 
-const usersReducer = (state: Array<usersType> = initialState, action: usersReducerType) => {
+export type InitialStateType = {
+    users: Array<userType>
+}
+
+const usersReducer = (state: InitialStateType = initialState, action: AllUsersReducerType): InitialStateType => {
 
     switch (action.type) {
         case FOLLOW:
@@ -108,7 +111,7 @@ export const unfollowAC = (userId: number) => {
     } as const
 }
 
-export const setUsersAC = (users: usersType) => {
+export const setUsersAC = (users: userType) => {
     return {
         type: SET_USERS, users
     } as const
