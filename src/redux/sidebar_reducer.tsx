@@ -1,4 +1,5 @@
 import {ActionsTypes, SidebarType} from './store';
+import {RootStoreType} from './redux_store';
 
 
 let initialState = [
@@ -7,7 +8,7 @@ let initialState = [
     {id: 3, name: 'Nastassia'},
 ]
 
-const sidebarReducer = (state: Array<SidebarType> = initialState, action: ActionsTypes) => {
+const sidebarReducer = (state: Array<SidebarType> = initialState, action: any): Array<SidebarType> => {
     return state
 };
 

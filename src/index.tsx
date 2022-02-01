@@ -1,4 +1,4 @@
-import store from './redax/redux_store';
+import store from './redux/redux_store';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom';

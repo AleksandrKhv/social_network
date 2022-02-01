@@ -1,7 +1,7 @@
 import React from 'react';
 import st from './Users.module.css'
 import {UsersPropsType} from './UsersContainer';
-import {userType} from '../../redax/users_reducer';
+import {userType} from '../../redux/users_reducer';
 
 /*type usersPropsType = {
     users: Array<userType>

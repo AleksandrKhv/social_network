@@ -1,7 +1,7 @@
 import React from 'react';
-import {sendNewMessageActionCreator, updateNewMessageBodyActionCreator} from '../../redax/dialogs_reducer';
+import {sendNewMessageActionCreator, updateNewMessageBodyActionCreator} from '../../redux/dialogs_reducer';
 import Dialogs from './Dialogs';
-import {RootStoreType} from '../../redax/redux_store';
+import {RootStoreType} from '../../redux/redux_store';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 

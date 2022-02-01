@@ -2,7 +2,7 @@ import React from 'react';
 import st from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogsItem';
 import Message from './Message/Message';
-import {InitialStateType} from '../../redax/dialogs_reducer';
+import {InitialStateType} from '../../redux/dialogs_reducer';
 
 type PropsType = {
     dialogsPage: InitialStateType
