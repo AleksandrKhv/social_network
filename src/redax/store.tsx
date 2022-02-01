@@ -2,7 +2,7 @@ import profileReducer, {addPostActionCreator, updateNewPostTextActionCreator} fr
 import dialogsReducer, {sendNewMessageActionCreator, updateNewMessageBodyActionCreator} from './dialogs_reducer';
 import sidebarReducer from './sidebar_reducer';
 
-const store: StoreType = {
+/*const store: StoreType = {
     _state: {
         profilePage: {
             posts: [
@@ -48,7 +48,7 @@ const store: StoreType = {
         this._callSubscriber = observer
     },
 
-    /*addPost() {
+    /!*addPost() {
         const newPost: PostsType = {
             id: new Date().getTime(),
             message: this._state.profilePage.newPostText,
@@ -57,11 +57,11 @@ const store: StoreType = {
         this._state.profilePage.posts.push(newPost)
         this._callSubscriber(this._state)
         this._state.profilePage.newPostText = ''
-    },*/
-    /*updateNewPostText(newText: string) {
+    },*!/
+    /!*updateNewPostText(newText: string) {
         this._state.profilePage.newPostText = newText
         this._callSubscriber(this._state)
-    },*/
+    },*!/
 
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action)
@@ -70,7 +70,7 @@ const store: StoreType = {
 
         this._callSubscriber(this._state)
 
-        /*if (action.type === ADD_POST) {
+        /!*if (action.type === ADD_POST) {
             const newPost: PostsType = {
                 id: new Date().getTime(),
                 // message: this._state.profilePage.newPostText,
@@ -94,9 +94,9 @@ const store: StoreType = {
             this._state.dialogsPage.newMessageText = ''
             this._state.dialogsPage.messages.push({id: 6, message: body})
             this._callSubscriber(this._state)
-        }*/
+        }*!/
     }
-}
+}*/
 
 /*const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
@@ -143,35 +143,35 @@ export type StoreType = {
     dispatch: (action: ActionsTypes) => void
 }
 
-type StateType = {
+export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
     sidebar: Array<SidebarType>
 }
 
-type ProfilePageType = {
+export type ProfilePageType = {
     posts: Array<PostsType>
     newPostText: string
 }
 
-type PostsType = {
+export type PostsType = {
     id: number
     message: string
     like: number
 }
 
-type DialogsPageType = {
+export type DialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessagesType>
     newMessageText: string
 }
 
-type DialogsType = {
+export type DialogsType = {
     id: number
     name: string
 }
 
-type MessagesType = {
+export type MessagesType = {
     id: number
     message: string
 }
@@ -181,7 +181,7 @@ export type SidebarType = {
     name: string
 }
 
-export default store;
+/*export default store;
 
 //@ts-ignore
-window.store=store
+window.store=store*/

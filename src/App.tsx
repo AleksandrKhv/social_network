@@ -31,7 +31,7 @@ function App() {
             <div className="app_wrapper_content">
                 <Routes>
                     <Route path={'/'} element={<Profile/>}/>
-                    <Route path={'/dialogs'} element={<DialogsContainer/>}/>
+                    <Route path={'/dialogs'} element={<DialogsContainer />}/>
                     <Route path={'/news'} element={<News/>}/>
                     <Route path={'/music'} element={<Music/>}/>
                     <Route path={'/settings'} element={<Settings/>}/>

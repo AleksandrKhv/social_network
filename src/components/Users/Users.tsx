@@ -1,17 +1,18 @@
 import React from 'react';
 import st from './Users.module.css'
 import {UsersPropsType} from './UsersContainer';
+import {userType} from '../../redax/users_reducer';
 
 /*type usersPropsType = {
     users: Array<userType>
     follow: (userId: number) => void
     unfollow: (userId: number) => void
-    setUsers: (users: Array<usersType>) => void
+    setUsers: (users: Array<userType>) => void
 }*/
 
 const Users = (props: UsersPropsType) => {
 
-    if (props.users.length === 0) {
+    if (props.usersPage.length === 0) {
         props.setUsers([
             {
                 id: 1,
@@ -41,7 +42,7 @@ const Users = (props: UsersPropsType) => {
 
     return <div>
         {
-            props.users.map(u => <div key={u.id}>
+            props.usersPage.map(u => <div key={u.id}>
                 <span>
                     <div>
                         <img className={st.usersPhoto} src={u.photoUrl}/>

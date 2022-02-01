@@ -1,7 +1,12 @@
 import React from 'react';
 import st from './MyPosts.module.css'
 import Post from './Post/Post';
-import {PostsType,} from '../../../redax/store';
+
+type PostsType = {
+    id: number
+    message: string
+    like: number
+}
 
 type PostType = {
     posts: Array<PostsType>

@@ -1,5 +1,6 @@
 import {ActionsTypes, SidebarType} from './store';
 
+
 let initialState = [
     {id: 1, name: 'Alex'},
     {id: 2, name: 'Sveta'},

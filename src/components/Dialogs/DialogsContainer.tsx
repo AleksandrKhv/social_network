@@ -35,7 +35,8 @@ import {Dispatch} from 'redux';
 
 let mapStateToProps = (state: RootStoreType) => {
     return {
-        dialogsPage: state.dialogsPage
+        dialogsPage: state.dialogsPage,
+        newMessageText: state.dialogsPage.newMessageText
     }
 }
 let mapDispatchToProps = (dispatch: Dispatch) => {

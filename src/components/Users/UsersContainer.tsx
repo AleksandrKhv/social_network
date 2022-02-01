@@ -6,7 +6,7 @@ import {followAC, InitialStateType, setUsersAC, unfollowAC, userType} from '../.
 import {Dispatch} from 'redux';
 
 type MapStatePropsType = {
-    usersPage: InitialStateType
+    usersPage: Array<userType>
 }
 
 type MapDispatchToPropsType = {
@@ -20,7 +20,7 @@ export type UsersPropsType = MapStatePropsType & MapDispatchToPropsType
 
 const mapStateToProps = (state: RootStoreType): MapStatePropsType => {
     return {
-        users: state.usersPage.users
+        usersPage: state.usersPage.users
     }
 }
 
